@@ -79,4 +79,28 @@ describe('root route', () => {
         })
     });
 
+    it("Should post data.", (done) => {
+        request(app)
+        .post('/')
+        .send({
+            "id": 3,
+            "title": "From Paris With Love",
+            "runtime": 94,
+            "release_year": 2010,
+            "director": "Pierre Morel",
+            })
+        .then((err, res) => {
+            if (err) {
+                reject(new Error('An error occured with the payment service, err: ' + err))
+               }
+               resolve(res.body)
+
+        })
+        .then((res) => {
+            expect(res.status).toBe(200)
+            console.log(res)
+        })
+        done();
+    })
+
 })

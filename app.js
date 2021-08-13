@@ -18,11 +18,20 @@ app.get('/movies', function(req, res) {
     .select('*')
     .from('movies')
     .where('title', 'ilike',`%${req.query.title}%`)
-    .then(data => res.status(200).json(data))
+    .then(data => {
+      if (data.length === 0){
+        return res.status(404).json({
+          message:
+          'Your query string returned no results'
+        })
+      } else {
+        return res.status(200).json(data)
+      }
+    })
     .catch(err =>
-      res.status(404).json({
+      res.status(400).json({
         message:
-          'The data you are looking for could not be found. Please try again'
+          'IM BROKE, WHAT DID YOU DO?!?!'
       })
     );
   } else {
@@ -64,32 +73,28 @@ app.get('/movies/:id', function(req, res){
       );
 })
 
-// app.get('/movies?title={titleQuery}', function(req, res){
-//   /* GET a movie by title */
-//   console.log('req params', req.params);
-//   knex
-//   .select('*')
-//   .from('movies')
-//   .where('title', req.query.title)
-//   .then(data => {
-//       if (data.length === 0){
-//         return res.status(404).json({
-//           message:
-//           'Movie ID not found'
-//         })
-//       } else {
-//         return res.status(200).json(data)
-//       }
-//     })
-//     .catch(err =>
-//       res.status(400).json({
-//         message:
-//           'Invalid ID supplied'
-//       })
-//     );
-// })
 
-// app.post()
+app.post('/', function(req, res){
+  knex
+  .insert({"title": req.body.title, "runtime": req.body.runtime, "release_year": req.body.release_year, "director": req.body.director})
+  .into('movies')
+  .then(data => res.status(200).json(data))
+  .then(console.log("post request complete"))
+
+
+
+  //knex.insert({"title": req.body.title, "runtime": req.body.runtime, "release_year": req.body.release_year, "director": req.body.director}).into('movies')
+
+  // {
+  //   "id": 3,
+  //   "title": "From Paris With Love",
+  //   "runtime": 94,
+  //   "release_year": 2010,
+  //   "director": "Pierre Morel",
+  //   }
+})
+
+
 
 // app.delete()
 
