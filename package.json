@@ -1,0 +1,29 @@
+{
+  "name": "expresscheckpoint",
+  "version": "1.0.0",
+  "description": "yes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development nodemon ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DebugBridge/ExpressCheckpoint.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DebugBridge/ExpressCheckpoint/issues"
+  },
+  "homepage": "https://github.com/DebugBridge/ExpressCheckpoint#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jest": "^27.0.6",
+    "knex": "^0.21.21",
+    "nodemon": "^2.0.12",
+    "pg": "^8.7.1",
+    "postgres": "^1.0.2"
+  }
+}
