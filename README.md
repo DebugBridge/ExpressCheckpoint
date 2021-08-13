@@ -1,7 +1,5 @@
 # ExpressCheckpoint
 
-fresh
-
 get movies
 
 As a client application consuming your api application,
@@ -12,4 +10,4 @@ As a client application consuming your application,
 I want to be able to search by title for movies from the database,
 so that I can list them on my interface.
 
-
+worked on this rep with @Warbuckle117
